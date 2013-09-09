@@ -1,6 +1,8 @@
-# Capistrano::Github::Robot
+# Capistrano Github Robot
 
-TODO: Write a gem description
+*Note: Functionality is really limited and settings are a little haphazard at the moment. Plan on the implementation changing in the future.*
+
+Currently only comments on pull requests. When you are continuously deploying pull requests for end to end testing, this script can post a message to the PR issue upon completing the deployment.
 
 ## Installation
 
@@ -18,7 +20,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add the following to your capfile:
+```Ruby
+require 'capistrano-github-robot'
+```
+
+The following options are available:
+```Ruby
+set :pull_request_number, '[string]'    		#required (the PR issue to post to)
+set :github_token, '[string]' 					#required (The oauth token for the user which will post the comment)
+set :target_comment_repository, '[string]'      #required (eg. 'my-account/my-repository')
+set :post_github_comment, '[string]'   			#required (Toggles posting on/off)
+set :comment_body, '[string]'       			#required (The comment body)
+```
 
 ## Contributing
 
